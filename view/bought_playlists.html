@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li>Login</li></a>
+                <% } %>
+                <a href="/store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        <div class = "links_to_playlists">
+            <ul>
+                <a href="my_playlists"><li>My Playlists</li></a>
+                <a href="bought_playlists"><li>Bought Playlists</li></a>
+            </ul>
+        </div>
+        <div class = "displayData">
+            <% if(bought_playlists){
+            for(var i in bought_playlists)
+            {   %>
+            <div class = "playlist">
+                <a href="/playlist_page/<%= bought_playlists[i].id %>">
+                    <img src = "<%= bought_playlists[i].thumbnail %>">
+                    <div class = "playlist_title">
+                        <%= bought_playlists[i].dataValues.title.substring(0,20) + "..."; %>
+                    </div>
+                </a>
+            </div>
+
+            <% }
+            }
+            %>
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

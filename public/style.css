@@ -1,0 +1,595 @@
+body{
+	font-family: "Segoe Print";
+	background-image:url("images/bckg.jpg");
+}
+a{
+	text-decoration: none;
+}
+.header{
+	height: 100px;
+	width: 100%;
+	background-color: #141414;
+	border-bottom:5px solid #913702;
+
+}
+.content{
+	height: 670px;
+	width: 90%;
+	overflow: auto;
+	margin-left: 50px;
+	margin-top: 50px;
+}
+.footer{
+	position: absolute;
+	top:90%;
+	text-align: center;
+}
+.nav-menu{
+	position: absolute;
+	left:50%;
+}
+ul li {
+	list-style-type: none;
+	display: inline-block;
+	height:30px;
+	min-width:100px;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	border:1px solid white;
+	border-radius: 20%;
+	box-shadow: 4px 8px black;
+	background-color: black;
+}
+ul li:hover{
+	transform: scale(0.9, 0.9);
+	background-color: darkgrey;
+
+	
+}
+ul li:active{
+	transform: translate(10,15);
+	color: blue;
+	box-shadow: 2px 3px black;
+}
+.logo{
+	position: absolute;
+	left: 5%;
+	top:-5%;
+
+}
+.button_log{
+	position: absolute;
+	height: 80px;
+	width: 140px;
+	left:50%;
+	top:50%;
+	margin-left: -70px;
+	margin-top: -40px;
+	font-size: 25px;
+	background-color: black;
+	color: white;
+	border: 5px solid #913702;
+	border-radius: 25px;
+	box-shadow: rgba(0, 0, 0, 0.88) 10px 10px;
+	font-family: "Segoe Script";
+}
+.button_log:hover{
+
+	color: white;
+	border: 15px solid #913702;
+	border-radius: 25px;
+	background-color: grey;
+}
+.button_log:active,.button_logout:active,.btn_payment:active,.payment_info button:active{
+	color:red;
+	transform:translate(10px,5px);
+	box-shadow: rgba(0, 0, 0, 0.88) 1px 1px;
+}
+.userInfo{
+	position: absolute;
+	height:400px;
+	width:400px;
+	left:50%;
+	top:50%;
+	margin-left: -200px;
+	margin-top: -200px;
+	background-color: #108039;
+	border-radius: 30px;
+	box-shadow: 10px 10px rgba(0, 0, 0, 0.77);
+	background-image: url(images/accountbg.jpg);
+
+}
+.userInfo img {
+	position: absolute;
+	left:10%;
+	top:5%;
+	border-radius: 25px;
+}
+.userInfoString{
+	position: absolute;
+	left:60%;
+	top:10%;
+}
+.button_logout,.payment_info button {
+	font-size: 25px;
+	width: 200px;
+	background-color: darkblue;
+	color: white;
+	border: 5px solid white;
+	border-radius: 25px;
+	box-shadow: rgba(0, 0, 0, 0.88) 10px 10px;
+	font-family: "Segoe Script";
+}
+.btn_payment{
+	font-size: 25px;
+	width: 200px;
+	background-color: darkblue;
+	color: white;
+	border: 5px solid red;
+	border-radius: 25px;
+	box-shadow: rgba(0, 0, 0, 0.88) 10px 10px;
+	font-family: "Segoe Script";
+}
+
+.button_logout:hover,.btn_payment:hover,.payment_info button:hover{
+	background-color: darkgrey;
+}
+.button_logout_place{
+	position: absolute;
+	top:80%;
+	left:50%;
+	margin-left: -100px;
+	font-size: 25px;
+}
+.btn_payment_place{
+	position: absolute;
+	top:65%;
+	left:50%;
+	margin-left: -100px;
+	font-size: 25px;
+}
+.links_to_playlists{
+	position: absolute;
+	left:0%;
+	top:30%;
+}
+.links_to_playlists ul li {
+	width:200px;
+	height: 50px;
+	font-size: 20px;
+	display: block;
+	list-style-type: none;
+}
+.links_to_playlists ul li:active{
+	transform: translate(10,20);
+}
+.userInfo img{
+	border:10px solid white;
+}
+.userInfoString{
+	position: absolute;
+	left:65%;
+	top:20%;
+}
+.like_btn_logout{
+	min-width: 120px;
+	font-size: 20px;
+	font-family: "Segoe Script";
+	border:2px solid white;
+	border-radius: 10px;
+	background-color: antiquewhite;
+}
+.displayData{
+	position: absolute;
+	left:30%;
+	top:20%;
+	height:70%;
+	width:60%;
+	overflow: auto;
+}
+.playlist,.video{
+	display: inline-block;
+	margin: 5px;
+	border:2px solid silver;
+	border-radius: 5px;
+	height:220px;
+}
+.playlist:hover{
+	border: 2px solid red;
+}
+.playlist:hover .sell{
+	display: inline-block;
+}
+
+
+.playlist_title,.video_title{
+	position: relative;
+	text-align: center;
+	border:2px solid white;
+	border-radius: 5px;
+	color: white;
+	max-width: 320px;
+	max-height: 25px;
+}
+.sell{
+	//display: none;
+	position: relative;
+	left:0px;
+	top: -220px;
+	height:30px;
+	width: 75px;
+	border: 1px solid silver;
+	color:white;
+	background-color: blue;
+	border-radius: 5px;
+	box-shadow: 2px 3px black;
+}
+.price_holder{
+	position: relative;
+	left:250px;
+	top: -250px;
+	height:30px;
+	width: 75px;
+	border: 1px solid red;
+	color:white;
+	background-color: blue;
+	border-radius: 50%;
+	box-shadow: 2px 3px black;
+	text-align: center;
+}
+.sell:hover{
+	background-color: red;
+}
+.sell:active{
+	transform: translateX(5px);
+	transform: translateY(5px);
+	background-color: #112951;
+	border-radius: 7px;
+}
+.like_alert_for_sell{
+	//display:none;
+	position: absolute;
+	top:50%;
+	left:50%;
+	height:300px;
+	width: 500px;
+	margin-left: -250px;
+	margin-top: -150px;
+	background-color: yellow;
+	border-radius: 30px;
+}
+.input_price{
+	position: absolute;
+	top:70%;
+	left:40%;
+	border: 2px solid green;
+	border-radius: 5px;
+}
+#send_window_btn{
+	position: absolute;
+	height:25%;
+	width: 40%;
+	left:50%;
+	top:70%;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	border:1px solid white;
+	border-radius: 20%;
+	box-shadow: 4px 8px black;
+	background-color: black;
+}
+#cancel_send_window{
+	position: absolute;
+	height:25%;
+	width: 40%;
+	left:5%;
+	top:70%;
+	font-size: 20px;
+	text-align: center;
+	color: white;
+	border:1px solid white;
+	border-radius: 20%;
+	box-shadow: 4px 8px black;
+	background-color: black;
+}
+#send_window_input,#price_buying_pl{
+	position: absolute;
+	height:25%;
+	width: 40%;
+	left:30%;
+	top:25%;
+	font-size: 30px;
+	background-color: white;
+	text-align: center;
+	border:2px solid white;
+	border-radius: 10px;
+}
+#background_for_input_money {
+	background-color:#141414 ;
+	border: 1px solid white;
+	border-radius: 10px;
+}
+#send_window_btn:hover,#cancel_send_window:hover{
+	color : red;
+	background-color: white;
+}
+#send_window_btn:active,#cancel_send_window:active{
+	color : red;
+	background-color: #9dc0b8;
+	transform: translate(5px,5px);
+}
+.payment_info input {
+	width:300px;
+	height:50px;
+	padding: 5px;
+	margin:15px;
+	border: 2px solid darkblue;
+	color:blue;
+	border-radius: 25px;
+	background-color:blanchedalmond;
+	display: block;
+	position: relative;
+	left:50%;
+	margin-left: -150px;
+	font-family: "Segoe Print";
+	font-size: 25px;
+	text-align: center;
+}
+.payment_info input:focus{
+	border-radius: 25px;
+	border:2px solid blue;
+	background-color: lightblue;
+
+}
+.payment_info button{
+	height:80px;
+	width:310px;
+	position: relative;
+	left:50%;
+	margin-left: -148px;
+}
+.inteledger_info{
+	position: absolute;
+	right:10px;
+	top:50%;
+	height: 200px;
+	width: 360px;
+	background-color: white;
+	margin-top: -200px;
+	border: 3px solid #00a5ff;
+	border-radius: 25px;
+	text-align: center;
+	background-color: silver;
+	color:black;
+}
+.card_image{
+	border:1px solid white;
+	position:absolute;
+	left:5%;
+	top:15%;
+	border-radius: 10px;
+}
+.card_string{
+	position: absolute;
+	left:40%;
+	top:15%;
+	height: 120px;
+	width:180px;
+	border:1px solid green;
+	border-radius: 20px;
+	background-color: #141414;
+	color:white;
+}
+.locked{
+	position: absolute;
+	right:5px;
+	top:10px;
+}
+.user_inteledger_name{
+	position: absolute;
+	bottom:5px;
+	min-width:200px;
+	left:50%;
+	margin-left: -100px;
+	font-size: 20px;
+	border-top:1px solid red;
+	background-color: black;
+	color:white;
+	border-radius: 10px;
+}
+.card_header{
+	border-bottom: solid black 2px;
+	border-radius: 25px;
+	background-color: black;
+	color:white;
+}
+.active{
+	background-color: grey;
+	animation: pageColor;
+	animation-duration: 3s;
+}
+@keyframes pageColor {
+	from{background-color: blue;}
+	to{background-color: darkgrey;}
+}
+.seller{
+	position: relative;
+	left:210px;
+	top: -160px;
+	height:100px;
+	width: 100px;
+	border: 1px solid red;
+	color:white;
+	background-color: blue;
+	border-radius: 50%;
+	box-shadow: 2px 3px black;
+}
+.playlist-seller-page{
+	position: relative;
+	left:70%;
+	display: block;
+	margin: 5px;
+	border:2px solid silver;
+	border-radius: 5px;
+	height:220px;
+	width:320px;
+}
+.super_account{
+	position: absolute;
+	left:10%;
+	width:400px;
+	top:25%;
+	border:2px solid white;
+	border-radius: 25px;
+}
+.super_account img{
+	border: 1px solid white;
+	border-radius: 25px;
+}
+.super_account_name{
+	width:200px;
+	text-align: center;
+	background-color: blue;
+	color:white;
+	font-size: 20px;
+	border:1px solid white;
+	border-radius: 20%;
+}
+.super_account_info{
+	position: absolute;
+	top:10%;
+	left:55%;
+}
+.super_account_info div {
+	border:1px solid white;
+	border-radius: 10%;
+	width:160px;
+	text-align: center;
+	background-color: blue;
+	color: white;
+}
+.message_div{
+	position: relative;
+	top:-250px;
+	left:10%;
+	width:420px;
+	height:180px;
+	text-align: center;
+}
+#message{
+	border-radius: 10%;
+
+}
+
+.message_btn
+{
+	position: absolute;
+	top:55%;
+	left:85%;
+	height: 70px;
+	width: 70px;
+	border 2px solid white;
+	border-radius: 50%;
+	background-color: #00a5ff;
+	box-shadow: 4px 4px black;
+}
+.message_btn:hover{
+	background-color: blue;
+}
+.message_btn:active{
+	transform: translateX(5px);
+	transform: translateY(5px);
+	box-shadow: 0px 0px black;
+}
+.message_show,.message_show_send_by_me{
+	position: relative;
+	left:60%;
+	margin-left: -200px;
+	height:120px;
+	width:400px;
+	background-color: #141414;
+	color:white;
+	border:3px solid white;
+	border-radius: 25px;
+	padding-left: 25px;
+	margin-top: 20px;
+}
+.message_show img{
+    position: absolute;
+    left:75%;
+    height:70%;
+    width:20%;
+    border:1px solid white;
+    border-radius: 25%;
+}
+.message_show_send_by_me img
+{
+	position: absolute;
+	left:5%;
+	height:70%;
+	width:20%;
+	border:1px solid white;
+	border-radius: 25%;
+}
+.message_sender_name,.message_sender_send_by_me{
+    position: absolute;
+    left:75%;
+    top:78%;
+    height:20%;
+    width:20%;
+    border:1px solid white;
+    border-radius: 25%;
+    text-align: center;
+	background-color: blue;
+}
+.message_sender_send_by_me{
+	left:5%;
+}
+.message_show_send_by_me
+{
+	background-color: #59616d;
+	left:40%;
+}
+.message_text{
+	position: absolute;
+	left:10%;
+	width:50%;
+	overflow: auto;
+}
+.message_text_by_me{
+	position: absolute;
+	right:30%;
+	width:40%;
+	text-overflow: string;
+
+}
+#icon_unread_messages
+{
+	height:25px;
+	width:25px;
+	border:1px solid red;
+	border-radius: 50%;
+	background-color: red;
+	text-align: center;
+	color:white;
+}
+.about_content{
+
+	position: absolute;
+	width:800px;
+	left:50%;
+	margin-left: -400px;
+	text-align: center;
+	font-size: 25px;
+	color:white;
+}
+.sender_to_receiver img{
+	position: absolute;
+	left:85%;
+	height:35%;
+	width:10%;
+	border:1px solid white;
+	border-radius: 25%;
+}

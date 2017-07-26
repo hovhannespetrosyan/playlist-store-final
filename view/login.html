@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li class = "active">Login</li></a>
+                <% } %>
+                <a href="/store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        <% if(userInfo == undefined){ %>
+        <div class = "login_b">
+            <a href="auth/google"><input type='button' value ='Login' class = "button_log"></a>
+        </div>
+        <% } %>
+    </div>
+
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

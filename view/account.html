@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li class = "active">account</li></a>
+                <a href="/messages"><li id="message_position">Messages </li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li>Login</li></a>
+                <% } %>
+                <a href="/store"><li>Store</li></a>
+            </ul>
+            <%if(new_msg > 0){%><div id = "icon_unread_messages"><b><%= new_msg %></b></div>
+            <script>
+               var position =  $("#message_position").position();
+               $("#icon_unread_messages").css({position:"absolute",left:position.left +85+"px",top:position.top-10 + "px"});
+            </script>
+            <%}%>
+        </div>
+    </div>
+    <div class = "content">
+            <% if(userInfo == undefined){ %>
+            <div class = "login_b">
+                <a href="/auth/google"><input type='button' value ='Login' class = "button_log"></a>
+            </div>
+            <% } %>
+            <%	if(userInfo!=undefined){
+            console.log(userInfo);
+            %>
+            <div class = "userInfo">
+                <img src="<%= userInfo.photos[0].value.split('=')[0]+"=200" %>" alt="sorry can't upload the image" height="200px" width = "200px">
+                <div class="userInfoString">
+                    <div class = "like_btn_logout"><%= userInfo.name.givenName %></div><div class = "like_btn_logout"><%= userInfo.name.familyName %></div>
+                </div>
+                <div class = 'btn_payment_place'><a href="/payment"><input type="button" value = "PAYMENT" class = 'btn_payment'></a></div>
+                <div class='button_logout_place'><a href="/logout"><input type="button" value="Logout" class='button_logout'></a></div>
+            </div>
+            <div class = "links_to_playlists">
+                <ul>
+                    <a href="my_playlists"><li>My Playlists</li></a>
+                    <a href="bought_playlists"><li>Bought Playlists</li></a>
+                </ul>
+            </div>
+            <% console.log(userInfo.photos[0].value);} %>
+        <% if(pay_info != undefined){ %>
+            <div class = "inteledger_info">
+                <div class="card_header">
+                    <b>CARD for Payment</b>
+                </div>
+
+                <img src="<%= userInfo.photos[0].value.split('=')[0]+"=200" %>" alt="" class = "card_image" height = "120px" width = 120px">
+                <img src="images/locked.png" alt="oops" height="30px" width="30px" class = "locked">
+                <div class = "card_string">
+                   name : <%= userInfo.name.givenName %>
+                    <br>
+                    surname : <%= userInfo.name.familyName %>
+                </div>
+                <div class = "user_inteledger_name">
+                 interledger: <%= pay_info.pay_username %>
+                </div>
+
+            </div>
+        <%}%>
+
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

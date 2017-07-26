@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li>Login</li></a>
+                <% } %>
+                <a href="/store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        
+        <div class = "links_to_playlists">
+            <ul>
+                <a href="/my_playlists"><li>My Playlists</li></a>
+                <a href="/bought_playlists"><li>Bought Playlists</li></a>
+            </ul>
+        </div>
+        <div class = "displayData">
+            <% if(data){
+            for(var i in data)
+            {   %>
+                <div class = "playlist">
+                    <a href="/playlist_page/<%= data[i].id %>">
+                        <img src = "<%= data[i].thumbnail %>">
+                        <div class = "playlist_title">
+                        <%= data[i].dataValues.title.substring(0,20) + "..."; %>
+                        </div>
+                    </a>
+                    <div id = "<%= 'selling' + data[i].id %>">
+                        <button class = "sell" id = "<%=data[i].id %>" <%  if(data[i].status == "selling"){%> disabled = true <%}%> >
+                            <%if(data[i].status == "youtube"){ %>
+                            SELL
+                            <% }else if(data[i].status == "selling") {%>
+                            Selling
+                            <% } %>
+                        </button>
+                    </div>
+
+                </div>
+
+            <% }
+            }
+            %>
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $(".sell").click(function(){
+
+                    send_selling = $(this).attr("id");
+                    console.log(send_selling);
+                    var fake_this = this;
+                    var mainDiv = $(".main");
+                    console.log(mainDiv);
+                    var send_window =  $("<div/>").attr("id","background_for_input_money").appendTo(mainDiv).css({"position":"absolute","height":300+"px","width":300+"px","margin-left":-150+"px","margin-top":-150+"px","left":"50%","top":"50%"});
+                    send_window.append($("<input/>").attr("id","send_window_input").attr("placeholder","price $"));
+                    send_window.append($("<button/>").attr("id","cancel_send_window").text("Cancel"));
+                    send_window.append($("<button/>").attr("id","send_window_btn").text("SELL"));
+                    $("#send_window_btn").click(function(){
+                        var statement = Number($("#send_window_input").val());
+                        if(statement + 0 === statement && statement != 0 )
+                        {
+                            var price_i = $("#send_window_input").val();
+                            $(fake_this).attr("disabled",true);
+                            $("#background_for_input_money").remove();
+                            $.post('/db_store_manager',
+                                {
+                                    item : send_selling,
+                                    price: price_i
+                                },
+                                function(data,status)
+                                {
+                                    console.log("---------------------------------------------------------------------------------");
+                                    console.log("------------DATA:"+ data.item_status + "STATUS:"+status);
+                                    console.log('---------');
+                                    if(data.item_status == 'selling')
+                                    {
+                                        $(fake_this).text("Selling \n " + statement + "$");
+                                    }
+                                    else if(data.move_to == 'payment')
+                                    {
+                                        document.location.href = "/payment";
+                                    }
+
+                                }
+                            );
+                        }
+                        else{
+                            $("#send_window_input").val() = "price $";
+                        }
+
+                    });
+                    $("#cancel_send_window").click(function(){
+                        $("#background_for_input_money").remove();
+                    });
+                });
+            });
+            </script>
+        </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

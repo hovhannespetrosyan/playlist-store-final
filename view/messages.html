@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <a href = "/account"><li>account</li></a>
+                <a href="/messages"><li class = "active">Messages</li></a>
+                <a href="/store"><li>Store</li></a>
+
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+
+        <% for(var i = message_sender_info.length-1;i>=0;i--){ %>
+            <div <%if(message_sender_info[i][3] == userInfo.id){%> class = "message_show_send_by_me" <% }else{ %>  class = "message_show <%=message_sender_info[i][4]%>"  <% } %>>
+                <div <%if(message_sender_info[i][3] == userInfo.id){%> class = "message_text_by_me" <% }else{ %>  class = "message_text" <% } %>>
+                    <%= message_sender_info[i][0] %>
+                </div>
+                <%if(message_sender_info[i][3] != userInfo.id){%>
+                    <a href="/seller_page/<%=message_sender_info[i][3] %>"><img src="<%= message_sender_info[i][2]%>" alt="OOPS"></a>
+                <%}else{%>
+                <a href="/account %>"><img src="<%= message_sender_info[i][2]%>" alt="OOPS"></a>
+                <% } %>
+                <div <% if(message_sender_info[i][3] == userInfo.id){%> class = "message_sender_send_by_me" <% }else{ %>  class = "message_sender_name" <% } %>>
+                    <%= message_sender_info[i][1] %>
+                </div>
+                <%if(message_sender_info[i][3] == userInfo.id) {%>
+                <div class="sender_to_receiver">
+                    <a href="/seller_page/<%=message_sender_info[i][7] %>">
+                        <img src="<%=message_sender_info[i][5] %>" alt="OOps">
+                    </a>
+                </div>
+                <% } %>
+
+            </div>
+/*
+            <% if(message_sender_info[i][4] == "unread"){%>
+                <script>
+                    $(".read").css("background-color","red");
+                </script>
+            <%} %>
+*/
+        <% } %>
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li>Login</li></a>
+                <% } %>
+                <a href="/store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        <div class = "payment_info">
+            <input type="text" id = "username" placeholder="username">
+            <input type="password" id = "password" placeholder="password">
+            <a href="/account"><button id = "send_payment">Submit</button></a>
+        </div>
+        <script>
+            $(document).ready(function(){
+                $("#send_payment").click(function(){
+                    var username = $('#username').val();
+                    var password = $('#password').val();
+                    if(username != null && password != null)
+                    {
+                        $.post('/payment_settings',
+                            {
+                                username:username,
+                                password:password
+                            },
+                        function(data,status){
+                            console.log('-----payment_settings-----');
+                            console.log(data);
+                            console.log(status);
+                            console.log('-----payment_settings-----');
+
+                        });
+                    }
+                });
+            });
+
+        </script>
+
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

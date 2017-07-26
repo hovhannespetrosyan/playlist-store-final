@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "/main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "/account"><li>account</li></a>
+                <a href="/messages"><li>Messages</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="/login"><li>Login</li></a>
+                <% } %>
+                <a href="/store"><li class = "active">Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        <%  if(store_info){for(var i= 0;i<store_info.length;i++){%>
+            <div class = "playlist">
+                    <a href="/playlist_page/<%= store_info[i][0].id %>">
+                        <img src = "<%= store_info[i][0].thumbnail %>">
+                        <div class = "playlist_title">
+                            <%= store_info[i][0].title %>
+                        </div>
+                    </a>
+                <!--here we give special id to sell(buy) button which contains id and price-->
+                        <button class = "sell" id = "<%=store_info[i][0].id + "price" + store_info[i][1].price %>" <%if(store_info[i][2]!=null){%>disabled =true <%}%>>
+
+                        <%if(store_info[i][2]!=null){%>Bought <%}else{%>
+                            BUY
+                        <%}%>
+                        </button>
+                        <div class = "price_holder" >
+                            <%= store_info[i][1].price + " $" %>
+                        </div>
+                            <a href="/seller_page/<%=store_info[i][3].googleID %>"><img src="<%=store_info[i][3].photos %>" alt="" class = "seller"></a>
+                </div>
+        <%} }%>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".sell").click(function(){
+
+                var send_buying = $(this).attr("id").split("price")[0];
+                var price = $(this).attr("id").split("price")[1];
+                console.log(send_buying);
+                var fake_this = this;
+                var mainDiv = $(".main");
+                console.log($(this).attr("id"));
+                var send_window =  $("<div/>").attr("id","background_for_input_money").appendTo(mainDiv).css({"position":"absolute","height":300+"px","width":300+"px","margin-left":-150+"px","margin-top":-150+"px","left":"50%","top":"50%"});
+                send_window.append($("<div/>").attr("id","price_buying_pl").text(price + " $"));
+                send_window.append($("<button/>").attr("id","cancel_send_window").text("Cancel"));
+                send_window.append($("<button/>").attr("id","send_window_btn").text("BUY"));
+                $("#send_window_btn").click(function(){
+                    $("#background_for_input_money").remove();
+
+                        $(fake_this).attr("disabled",true);
+
+                        $.post('/db_store_manager_buy',
+                            {
+                                item : send_buying
+                            },
+                            function(data,status)
+                            {
+                                console.log("---------------------------------------------------------------------------------");
+                                console.log("------------DATA:"+ data.move_to + "STATUS:"+status);
+                                console.log('---------');
+                                if(data.move_to == "payment")
+                                {
+                                    document.location.href = "/payment";
+                                }
+
+                                    $(fake_this).text("Bought");
+                            }
+                        );
+
+                });
+                $("#cancel_send_window").click(function(){
+                    $("#background_for_input_money").remove();
+                });
+            });
+        });
+    </script>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>

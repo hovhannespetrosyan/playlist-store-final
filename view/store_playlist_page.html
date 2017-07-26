@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items</title>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="/images/logo.png" height = "300px" width = "300px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "../main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "../account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="../login"><li>Login</li></a>
+                <% } %>
+                <a href="../store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+        <%	if(info != undefined ){
+        var photos = info.photos.split(",");
+        var videos = info.videos.split(",");
+
+        for(var i = 0; i< videos.length-1; i++)
+        {
+        %>
+        <a href="https://www.youtube.com/watch?v=<%=videos[i]%>" target = "_blank">
+            <div class = "video">
+                <div class = "video_img">
+                    <img src="<%= photos[i]%>">
+                </div>
+                <div class = video_title>
+                </div>
+            </div>
+        </a>
+        <% }} %>
+
+
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>main</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+	<div class = "main">
+		<div class = "header">
+			<div class = "logo">
+				<img src="images/logo.png" height = "300px" width = "300px">
+			</div>
+			<div class = "nav-menu">
+				<ul>
+					<a href = "/main"><li class = "active">About</li></a>
+					<% if(userInfo != undefined){ %>
+					<a href = "/account"><li>account</li></a>
+					<a href="/messages"><li>Messages</li></a>
+					<% } %>
+					<% if(userInfo == undefined){ %>
+					<a href="/login"><li>Login</li></a>
+					<% } %>
+					<a href="/store"><li>Store</li></a>
+				</ul>
+			</div>
+		</div>
+		<div class = "content">
+			<div class = "about_content">
+				Sign in with your Google Account and enjoy the functions of our website <br>
+				There you can find your lovely playlists and you can sell your own playlists too <br>
+				You can chat with sellers ....so join us...we wish you the best
+			</div>
+		</div>
+		<div class = "footer">
+			all rights are reserved
+		</div>
+	</div>
+</body>
+</html>
